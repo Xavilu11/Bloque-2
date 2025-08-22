@@ -1,0 +1,14 @@
+d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\obj\Debug\net9.0\VacunacionSemana10.GeneratedMSBuildEditorConfig.editorconfig
+d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\obj\Debug\net9.0\VacunacionSemana10.AssemblyInfoInputs.cache
+d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\obj\Debug\net9.0\VacunacionSemana10.AssemblyInfo.cs
+d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\obj\Debug\net9.0\VacunacionSemana10.csproj.CoreCompileInputs.cache
+d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\bin\Debug\net9.0\VacunacionSemana10.exe
+d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\bin\Debug\net9.0\VacunacionSemana10.deps.json
+d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\bin\Debug\net9.0\VacunacionSemana10.runtimeconfig.json
+d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\bin\Debug\net9.0\VacunacionSemana10.dll
+d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\bin\Debug\net9.0\VacunacionSemana10.pdb
+d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\obj\Debug\net9.0\VacunacionSemana10.dll
+d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\obj\Debug\net9.0\refint\VacunacionSemana10.dll
+d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\obj\Debug\net9.0\VacunacionSemana10.pdb
+d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\obj\Debug\net9.0\VacunacionSemana10.genruntimeconfig.cache
+d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\obj\Debug\net9.0\ref\VacunacionSemana10.dll
