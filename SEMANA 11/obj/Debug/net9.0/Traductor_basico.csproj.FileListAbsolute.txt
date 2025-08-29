@@ -1,0 +1,15 @@
+D:\ProyectosCsharp\Bloque 2\SEMANA 11\obj\Debug\net9.0\Traductor_basico.GeneratedMSBuildEditorConfig.editorconfig
+D:\ProyectosCsharp\Bloque 2\SEMANA 11\obj\Debug\net9.0\Traductor_basico.AssemblyInfoInputs.cache
+D:\ProyectosCsharp\Bloque 2\SEMANA 11\obj\Debug\net9.0\Traductor_basico.AssemblyInfo.cs
+D:\ProyectosCsharp\Bloque 2\SEMANA 11\obj\Debug\net9.0\Traductor_basico.csproj.CoreCompileInputs.cache
+D:\ProyectosCsharp\Bloque 2\SEMANA 11\obj\Debug\net9.0\Traductor_basico.sourcelink.json
+D:\ProyectosCsharp\Bloque 2\SEMANA 11\bin\Debug\net9.0\Traductor_basico.exe
+D:\ProyectosCsharp\Bloque 2\SEMANA 11\bin\Debug\net9.0\Traductor_basico.deps.json
+D:\ProyectosCsharp\Bloque 2\SEMANA 11\bin\Debug\net9.0\Traductor_basico.runtimeconfig.json
+D:\ProyectosCsharp\Bloque 2\SEMANA 11\bin\Debug\net9.0\Traductor_basico.dll
+D:\ProyectosCsharp\Bloque 2\SEMANA 11\bin\Debug\net9.0\Traductor_basico.pdb
+D:\ProyectosCsharp\Bloque 2\SEMANA 11\obj\Debug\net9.0\Traductor_basico.dll
+D:\ProyectosCsharp\Bloque 2\SEMANA 11\obj\Debug\net9.0\refint\Traductor_basico.dll
+D:\ProyectosCsharp\Bloque 2\SEMANA 11\obj\Debug\net9.0\Traductor_basico.pdb
+D:\ProyectosCsharp\Bloque 2\SEMANA 11\obj\Debug\net9.0\Traductor_basico.genruntimeconfig.cache
+D:\ProyectosCsharp\Bloque 2\SEMANA 11\obj\Debug\net9.0\ref\Traductor_basico.dll
