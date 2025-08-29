@@ -32,57 +32,100 @@ class TraductorBasico
         {"compañía", "company"}
     };
 
-
-    public static void TraducirPalabra()
+    public static void TraducirFrase()
     {
-        Console.Write("Ingrese una palabra en español: ");
-        string palabra = (Console.ReadLine() ?? "").Trim().ToLower();
-
-        if (string.IsNullOrWhiteSpace(palabra))
+        Console.Write("Ingrese una frase en español: ");
+        string? fraseInput = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(fraseInput))
         {
-            Console.WriteLine("Debe ingresar una palabra.");
+            Console.WriteLine("Debe ingresar una frase.");
             return;
         }
 
-        if (diccionario.TryGetValue(palabra, out string traduccion))
+        string[] palabras = fraseInput.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        List<string> resultado = new List<string>();
+
+        foreach (string palabraOriginal in palabras)
         {
-            Console.WriteLine($"Traducción: {traduccion}");
+            // Limpiar signos de puntuación al final de la palabra
+            string palabraLimpia = palabraOriginal.TrimEnd('.', ',', ';', ':', '!', '?').ToLower();
+            string puntuacion = palabraOriginal.Length > palabraLimpia.Length
+                ? palabraOriginal.Substring(palabraLimpia.Length)
+                : "";
+
+            if (diccionario.TryGetValue(palabraLimpia, out string traduccion))
+            {
+                // Mantener mayúscula si la palabra original la tenía
+                if (char.IsUpper(palabraOriginal[0]))
+                    traduccion = char.ToUpper(traduccion[0]) + traduccion.Substring(1);
+
+                resultado.Add(traduccion + puntuacion);
+            }
+            else
+            {
+                resultado.Add(palabraOriginal);
+            }
         }
-        else
-        {
-            Console.WriteLine("Palabra no encontrada en el diccionario.");
-        }
+
+        Console.WriteLine("Traducción:");
+        Console.WriteLine(string.Join(" ", resultado));
     }
 
-   public static void MostrarDiccionario()
+    public static void AgregarPalabra()
     {
-        Console.WriteLine("\nPalabras disponibles en el diccionario:");
-        foreach (var par in diccionario)
+        Console.Write("Ingrese la palabra en español: ");
+        string? espInput = Console.ReadLine();
+        string esp = (espInput ?? "").Trim().ToLower();
+
+        if (string.IsNullOrWhiteSpace(esp))
         {
-            Console.WriteLine($"{par.Key} -> {par.Value}");
+            Console.WriteLine("Debe ingresar una palabra válida.");
+            return;
         }
+
+        Console.Write("Ingrese la traducción en inglés: ");
+        string? ingInput = Console.ReadLine();
+        string ing = (ingInput ?? "").Trim().ToLower();
+
+        if (string.IsNullOrWhiteSpace(ing))
+        {
+            Console.WriteLine("Debe ingresar una traducción válida.");
+            return;
+        }
+
+        if (diccionario.ContainsKey(esp))
+        {
+            Console.WriteLine("La palabra ya existe en el diccionario. Se actualizará la traducción.");
+        }
+        diccionario[esp] = ing;
+        Console.WriteLine("Palabra agregada/actualizada correctamente.");
     }
+}
+
+class Program
+{
     static void Main(string[] args)
     {
         while (true)
         {
             Console.Clear();
-            Console.WriteLine("=== Traductor Básico Español-Inglés ===");
-            Console.WriteLine("1. Traducir palabra");
-            Console.WriteLine("2. Mostrar todas las palabras");
-            Console.WriteLine("3. Salir");
+            Console.WriteLine("==================== MENÚ ====================");
+            Console.WriteLine("1. Traducir una frase");
+            Console.WriteLine("2. Agregar palabras al diccionario");
+            Console.WriteLine("0. Salir");
             Console.Write("Seleccione una opción: ");
-            string opcion = (Console.ReadLine() ?? "");
+            string? opcionInput = Console.ReadLine();
+            string opcion = (opcionInput ?? "").Trim().ToLower();
 
             switch (opcion)
             {
                 case "1":
-                    TraductorBasico.TraducirPalabra();
+                    TraductorBasico.TraducirFrase();
                     break;
                 case "2":
-                    TraductorBasico.MostrarDiccionario();
+                    TraductorBasico.AgregarPalabra();
                     break;
-                case "3":
+                case "0":
                     Console.WriteLine("¡Hasta luego!");
                     return;
                 default:
