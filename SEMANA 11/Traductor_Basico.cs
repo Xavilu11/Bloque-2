@@ -55,7 +55,7 @@ class TraductorBasico
 
             if (diccionario.TryGetValue(palabraLimpia, out string traduccion))
             {
-                // Mantener mayúscula si la palabra original la tenía
+                // La palabra debe tener la misma forma que la ingresada, si tiene una mayúscula, también deberá tenerla la
                 if (char.IsUpper(palabraOriginal[0]))
                     traduccion = char.ToUpper(traduccion[0]) + traduccion.Substring(1);
 
