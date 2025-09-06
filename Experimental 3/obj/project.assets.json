@@ -13,15 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj",
       "projectName": "Torneo_de_Futbol",
       "projectPath": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj",
-=======
-      "projectUniqueName": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Experimental 3.csproj",
-      "projectName": "Experimental 3",
-      "projectPath": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Experimental 3.csproj",
->>>>>>> bc62132deefb7eb6a872ca2a1ce005b544e640ae
       "packagesPath": "C:\\Users\\xavie\\.nuget\\packages\\",
       "outputPath": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\obj\\",
       "projectStyle": "PackageReference",
@@ -74,5 +68,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0."
+    }
+  ]
 }
