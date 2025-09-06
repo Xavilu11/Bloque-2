@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "uq2EoC9K0a8=",
   "success": true,
   "projectFilePath": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj",
+=======
+  "dgSpecHash": "Rz6r+unYqNE=",
+  "success": true,
+  "projectFilePath": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Experimental 3.csproj",
+>>>>>>> bc62132deefb7eb6a872ca2a1ce005b544e640ae
   "expectedPackageFiles": [],
   "logs": []
 }
