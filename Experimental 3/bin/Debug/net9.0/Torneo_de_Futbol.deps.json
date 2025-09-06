@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "Torneo_de_Futbol/1.0.0": {
+        "runtime": {
+          "Torneo_de_Futbol.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Torneo_de_Futbol/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

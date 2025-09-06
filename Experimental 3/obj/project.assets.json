@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Experimental 3.csproj",
-      "projectName": "Experimental 3",
-      "projectPath": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Experimental 3.csproj",
+      "projectUniqueName": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj",
+      "projectName": "Torneo_de_Futbol",
+      "projectPath": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj",
       "packagesPath": "C:\\Users\\xavie\\.nuget\\packages\\",
       "outputPath": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\obj\\",
       "projectStyle": "PackageReference",

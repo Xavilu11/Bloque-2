@@ -1,0 +1,15 @@
+D:\ProyectosCsharp\Bloque 2\Experimental 3\bin\Debug\net9.0\Torneo_de_Futbol.exe
+D:\ProyectosCsharp\Bloque 2\Experimental 3\bin\Debug\net9.0\Torneo_de_Futbol.dll
+D:\ProyectosCsharp\Bloque 2\Experimental 3\bin\Debug\net9.0\Torneo_de_Futbol.deps.json
+D:\ProyectosCsharp\Bloque 2\Experimental 3\bin\Debug\net9.0\Torneo_de_Futbol.runtimeconfig.json
+D:\ProyectosCsharp\Bloque 2\Experimental 3\bin\Debug\net9.0\Torneo_de_Futbol.pdb
+D:\ProyectosCsharp\Bloque 2\Experimental 3\obj\Debug\net9.0\Torneo_de_Futbol.GeneratedMSBuildEditorConfig.editorconfig
+D:\ProyectosCsharp\Bloque 2\Experimental 3\obj\Debug\net9.0\Torneo_de_Futbol.AssemblyInfoInputs.cache
+D:\ProyectosCsharp\Bloque 2\Experimental 3\obj\Debug\net9.0\Torneo_de_Futbol.AssemblyInfo.cs
+D:\ProyectosCsharp\Bloque 2\Experimental 3\obj\Debug\net9.0\Torneo_de_Futbol.csproj.CoreCompileInputs.cache
+D:\ProyectosCsharp\Bloque 2\Experimental 3\obj\Debug\net9.0\Torneo_de_Futbol.sourcelink.json
+D:\ProyectosCsharp\Bloque 2\Experimental 3\obj\Debug\net9.0\Torneo_de_Futbol.dll
+D:\ProyectosCsharp\Bloque 2\Experimental 3\obj\Debug\net9.0\refint\Torneo_de_Futbol.dll
+D:\ProyectosCsharp\Bloque 2\Experimental 3\obj\Debug\net9.0\Torneo_de_Futbol.pdb
+D:\ProyectosCsharp\Bloque 2\Experimental 3\obj\Debug\net9.0\Torneo_de_Futbol.genruntimeconfig.cache
+D:\ProyectosCsharp\Bloque 2\Experimental 3\obj\Debug\net9.0\ref\Torneo_de_Futbol.dll
