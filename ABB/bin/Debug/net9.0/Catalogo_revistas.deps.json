@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "Catalogo_revistas/1.0.0": {
+        "runtime": {
+          "Catalogo_revistas.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Catalogo_revistas/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,15 @@
+D:\ProyectosCsharp\Bloque 2\ABB\obj\Debug\net9.0\Catalogo_revistas.GeneratedMSBuildEditorConfig.editorconfig
+D:\ProyectosCsharp\Bloque 2\ABB\obj\Debug\net9.0\Catalogo_revistas.AssemblyInfoInputs.cache
+D:\ProyectosCsharp\Bloque 2\ABB\obj\Debug\net9.0\Catalogo_revistas.AssemblyInfo.cs
+D:\ProyectosCsharp\Bloque 2\ABB\obj\Debug\net9.0\Catalogo_revistas.csproj.CoreCompileInputs.cache
+D:\ProyectosCsharp\Bloque 2\ABB\obj\Debug\net9.0\Catalogo_revistas.sourcelink.json
+D:\ProyectosCsharp\Bloque 2\ABB\bin\Debug\net9.0\Catalogo_revistas.exe
+D:\ProyectosCsharp\Bloque 2\ABB\bin\Debug\net9.0\Catalogo_revistas.deps.json
+D:\ProyectosCsharp\Bloque 2\ABB\bin\Debug\net9.0\Catalogo_revistas.runtimeconfig.json
+D:\ProyectosCsharp\Bloque 2\ABB\bin\Debug\net9.0\Catalogo_revistas.dll
+D:\ProyectosCsharp\Bloque 2\ABB\bin\Debug\net9.0\Catalogo_revistas.pdb
+D:\ProyectosCsharp\Bloque 2\ABB\obj\Debug\net9.0\Catalogo_revistas.dll
+D:\ProyectosCsharp\Bloque 2\ABB\obj\Debug\net9.0\refint\Catalogo_revistas.dll
+D:\ProyectosCsharp\Bloque 2\ABB\obj\Debug\net9.0\Catalogo_revistas.pdb
+D:\ProyectosCsharp\Bloque 2\ABB\obj\Debug\net9.0\Catalogo_revistas.genruntimeconfig.cache
+D:\ProyectosCsharp\Bloque 2\ABB\obj\Debug\net9.0\ref\Catalogo_revistas.dll
