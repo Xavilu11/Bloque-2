@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VacunacionSemana10")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+736d50db2f986e47afc46b299cb18e0a19689d87")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77988c10b92497eca8129f3901f6853ec4c37882")]
 [assembly: System.Reflection.AssemblyProductAttribute("VacunacionSemana10")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VacunacionSemana10")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

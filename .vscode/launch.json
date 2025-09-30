@@ -5,7 +5,6 @@
       "name": ".NET Core Launch (console)",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "build",
       "program": "${workspaceFolder}/VacunacionSemana10/bin/Debug/net9.0/VacunacionSemana10.dll",
       "args": [],
       "cwd": "${workspaceFolder}/VacunacionSemana10",

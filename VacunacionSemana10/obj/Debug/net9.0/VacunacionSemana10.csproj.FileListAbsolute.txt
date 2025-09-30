@@ -12,3 +12,4 @@ d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\obj\Debug\net9.0\refint\Vacunacio
 d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\obj\Debug\net9.0\VacunacionSemana10.pdb
 d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\obj\Debug\net9.0\VacunacionSemana10.genruntimeconfig.cache
 d:\ProyectosCsharp\Bloque 2\VacunacionSemana10\obj\Debug\net9.0\ref\VacunacionSemana10.dll
+D:\ProyectosCsharp\Bloque 2\VacunacionSemana10\obj\Debug\net9.0\VacunacionSemana10.sourcelink.json
