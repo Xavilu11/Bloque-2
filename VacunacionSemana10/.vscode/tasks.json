@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build Vacunación",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/VacunacionSemana10/VacunacionSemana10.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

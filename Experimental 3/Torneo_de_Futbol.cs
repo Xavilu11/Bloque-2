@@ -1,145 +1,196 @@
-using System;
-using System.Collections.Generic;
+using System; 
 
-namespace RegistroTorneoFutbol
+// Representamos al jugador de fútbol
+class Jugador
 {
-    class Jugador
-    {
-        public string Nombre { get; set; }
-        public string Posicion { get; set; }
-        public string Numero { get; set; }
+    public string Nombre;
+    public string Posicion;
+    public string Numero;
 
-        public Jugador(string nombre, string posicion, string numero)
+    public Jugador(string nombre, string posicion, string numero)
+    {
+        Nombre = nombre;
+        Posicion = posicion;
+        Numero = numero;
+    }
+}
+
+// Clase para mostrar un equipo con su lista de jugadores
+class Equipo
+{
+    public string Nombre;
+    public Jugador[] Jugadores = new Jugador[30]; // Máximo 30 jugadores por equipo
+    public int TotalJugadores = 0;
+
+    public Equipo(string nombre)
+    {
+        Nombre = nombre;
+    }
+
+    // Verifica si un jugador está registrado.
+    public bool ExisteJugador(string nombre)
+    {
+        for (int i = 0; i < TotalJugadores; i++)
         {
-            Nombre = nombre;
-            Posicion = posicion;
-            Numero = numero;
+            if (Jugadores[i].Nombre == nombre)
+                return true;
+        }
+        return false;
+    }
+
+    // Agrega un jugador al equipo
+    public void AgregarJugador(Jugador j)
+    {
+        if (TotalJugadores < 100)
+        {
+            Jugadores[TotalJugadores] = j;
+            TotalJugadores++;
+        }
+    }
+}
+
+// Clase principal del programa
+class Program
+{
+    // Arreglo para guardar los equipos registrados
+    static Equipo[] equipos = new Equipo[50]; // Máximo 50 equipos
+    static int totalEquipos = 0;
+
+    // Busca un equipo por nombre.
+    static int BuscarEquipo(string nombre)
+    {
+        for (int i = 0; i < totalEquipos; i++)
+        {
+            if (equipos[i].Nombre == nombre)
+                return i;
+        }
+        return -1; // No encontrado
+    }
+
+    // Registra un nuevo equipo si no existe
+    static void RegistrarEquipo()
+    {
+        Console.Write("Ingrese el nombre del equipo: ");
+        string nombre = Console.ReadLine().Trim();
+
+        if (BuscarEquipo(nombre) != -1)
+        {
+            Console.WriteLine($"El equipo '{nombre}' ya está registrado.");
+        }
+        else
+        {
+            equipos[totalEquipos] = new Equipo(nombre);
+            totalEquipos++;
+            Console.WriteLine($"Equipo '{nombre}' registrado correctamente.");
         }
     }
 
-    class Program
+    // Registra jugadores en un equipo.
+    static void RegistrarJugador()
     {
-        static HashSet<string> equipos = new HashSet<string>();
-        static Dictionary<string, Dictionary<string, Jugador>> jugadoresPorEquipo = new Dictionary<string, Dictionary<string, Jugador>>();
-
-        static void RegistrarEquipo()
+        if (totalEquipos == 0)
         {
-            Console.Write("Ingrese el nombre del equipo: ");
-            string equipo = Console.ReadLine().Trim();
+            Console.WriteLine("No hay equipos registrados. Primero registre un equipo.");
+            return;
+        }
 
-            if (equipos.Contains(equipo))
+        Console.WriteLine("Equipos registrados:");
+        for (int i = 0; i < totalEquipos; i++)
+        {
+            Console.WriteLine($"- {equipos[i].Nombre}");
+        }
+
+        Console.Write("Ingrese el nombre del equipo para registrar jugadores: ");
+        string nombreEquipo = Console.ReadLine().Trim();
+        int idx = BuscarEquipo(nombreEquipo);
+
+        if (idx == -1)
+        {
+            Console.WriteLine($"El equipo '{nombreEquipo}' no está registrado.");
+            return;
+        }
+
+        Equipo eq = equipos[idx];
+
+        while (true)
+        {
+            Console.Write("Ingrese el nombre del jugador (o 'salir' para terminar): ");
+            string nombreJugador = Console.ReadLine().Trim();
+            if (nombreJugador.ToLower() == "salir")
+                break;
+
+            if (eq.ExisteJugador(nombreJugador))
             {
-                Console.WriteLine($"El equipo '{equipo}' ya está registrado.");
+                Console.WriteLine($"El jugador '{nombreJugador}' ya está registrado en el equipo '{nombreEquipo}'.");
+                continue;
+            }
+
+            Console.Write("Ingrese la posición del jugador: ");
+            string posicion = Console.ReadLine().Trim();
+
+            Console.Write("Ingrese el número del jugador: ");
+            string numero = Console.ReadLine().Trim();
+
+            eq.AgregarJugador(new Jugador(nombreJugador, posicion, numero));
+            Console.WriteLine($"Jugador '{nombreJugador}' registrado en el equipo '{nombreEquipo}'.");
+        }
+    }
+
+    // Muestra el reporte completo de equipos y jugadores
+    static void MostrarReporte()
+    {
+        Console.WriteLine("\n--- Reporte de Equipos y Jugadores ---");
+
+        for (int i = 0; i < totalEquipos; i++)
+        {
+            Equipo eq = equipos[i];
+            Console.WriteLine($"\nEquipo: {eq.Nombre}");
+
+            if (eq.TotalJugadores == 0)
+            {
+                Console.WriteLine("  No hay jugadores registrados.");
             }
             else
             {
-                equipos.Add(equipo);
-                Console.WriteLine($"Equipo '{equipo}' registrado correctamente.");
+                for (int j = 0; j < eq.TotalJugadores; j++)
+                {
+                    Jugador jugador = eq.Jugadores[j];
+                    Console.WriteLine($"  Jugador: {jugador.Nombre}, Posición: {jugador.Posicion}, Número: {jugador.Numero}");
+                }
             }
         }
+    }
 
-        static void RegistrarJugador()
+    // Menú principal del programa
+    static void Main(string[] args)
+    {
+        while (true)
         {
-            if (equipos.Count == 0)
-            {
-                Console.WriteLine("No hay equipos registrados. Primero registre un equipo.");
-                return;
-            }
+            Console.WriteLine("\nOpciones:");
+            Console.WriteLine("1. Registrar equipo");
+            Console.WriteLine("2. Registrar jugador de equipo");
+            Console.WriteLine("3. Mostrar reporte");
+            Console.WriteLine("4. Salir");
+            Console.Write("Seleccione una opción: ");
+            string opcion = Console.ReadLine().Trim();
 
-            Console.WriteLine("Equipos registrados:");
-            foreach (var e in equipos)
+            switch (opcion)
             {
-                Console.WriteLine($"- {e}");
-            }
-
-            Console.Write("Ingrese el nombre del equipo para registrar jugadores: ");
-            string equipo = Console.ReadLine().Trim();
-
-            if (!equipos.Contains(equipo))
-            {
-                Console.WriteLine($"El equipo '{equipo}' no está registrado.");
-                return;
-            }
-
-            if (!jugadoresPorEquipo.ContainsKey(equipo))
-            {
-                jugadoresPorEquipo[equipo] = new Dictionary<string, Jugador>();
-            }
-
-            while (true)
-            {
-                Console.Write("Ingrese el nombre del jugador (o 'salir' para terminar): ");
-                string nombre = Console.ReadLine().Trim();
-                if (nombre.ToLower() == "salir")
+                case "1":
+                    RegistrarEquipo();
                     break;
-
-                if (jugadoresPorEquipo[equipo].ContainsKey(nombre))
-                {
-                    Console.WriteLine($"El jugador '{nombre}' ya está registrado en el equipo '{equipo}'.");
-                    continue;
-                }
-
-                Console.Write("Ingrese la posición del jugador: ");
-                string posicion = Console.ReadLine().Trim();
-
-                Console.Write("Ingrese el número del jugador: ");
-                string numero = Console.ReadLine().Trim();
-
-                jugadoresPorEquipo[equipo][nombre] = new Jugador(nombre, posicion, numero);
-                Console.WriteLine($"Jugador '{nombre}' registrado en el equipo '{equipo}'.");
-            }
-        }
-
-        static void MostrarReporte()
-        {
-            Console.WriteLine("\n--- Reporte de Equipos y Jugadores ---");
-            foreach (var equipo in equipos)
-            {
-                Console.WriteLine($"\nEquipo: {equipo}");
-                if (jugadoresPorEquipo.ContainsKey(equipo) && jugadoresPorEquipo[equipo].Count > 0)
-                {
-                    foreach (var jugador in jugadoresPorEquipo[equipo].Values)
-                    {
-                        Console.WriteLine($"  Jugador: {jugador.Nombre}, Posición: {jugador.Posicion}, Número: {jugador.Numero}");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("  No hay jugadores registrados.");
-                }
-            }
-        }
-
-        static void Main(string[] args)
-        {
-            while (true)
-            {
-                Console.WriteLine("\nOpciones:");
-                Console.WriteLine("1. Registrar equipo");
-                Console.WriteLine("2. Registrar jugador de equipo");
-                Console.WriteLine("3. Mostrar reporte");
-                Console.WriteLine("4. Salir");
-                Console.Write("Seleccione una opción: ");
-                string opcion = Console.ReadLine().Trim();
-
-                switch (opcion)
-                {
-                    case "1":
-                        RegistrarEquipo();
-                        break;
-                    case "2":
-                        RegistrarJugador();
-                        break;
-                    case "3":
-                        MostrarReporte();
-                        break;
-                    case "4":
-                        Console.WriteLine("Saliendo del programa.");
-                        return;
-                    default:
-                        Console.WriteLine("Opción no válida, intente de nuevo.");
-                        break;
-                }
+                case "2":
+                    RegistrarJugador();
+                    break;
+                case "3":
+                    MostrarReporte();
+                    break;
+                case "4":
+                    Console.WriteLine("Saliendo del programa.");
+                    return;
+                default:
+                    Console.WriteLine("Opción no válida, intente de nuevo.");
+                    break;
             }
         }
     }

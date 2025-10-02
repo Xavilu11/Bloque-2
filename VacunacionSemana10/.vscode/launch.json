@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Ejecutar Vacunación",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build Vacunación",
+      "program": "${workspaceFolder}/VacunacionSemana10/bin/Debug/net9.0/VacunacionSemana10.dll",
+      "cwd": "${workspaceFolder}/VacunacionSemana10",
+      "console": "externalTerminal"
+    }
+  ]
+}

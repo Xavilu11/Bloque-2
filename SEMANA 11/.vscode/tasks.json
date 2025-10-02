@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build Traductor Básico",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/Traductor_basico.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

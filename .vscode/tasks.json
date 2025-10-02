@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build Traductor Básico",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/SEMANA 11/Traductor_basico.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build Torneo de Fútbol",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/Experimental 3/Torneo_de_Futbol.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build ABB",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/ABB/Catalogo_revistas.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

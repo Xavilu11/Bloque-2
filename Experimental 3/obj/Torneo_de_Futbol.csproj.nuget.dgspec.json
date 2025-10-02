@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj": {}
+    "d:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj": {}
   },
   "projects": {
-    "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj": {
+    "d:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj",
+        "projectUniqueName": "d:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj",
         "projectName": "Torneo_de_Futbol",
-        "projectPath": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj",
+        "projectPath": "d:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj",
         "packagesPath": "C:\\Users\\xavie\\.nuget\\packages\\",
-        "outputPath": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\obj\\",
+        "outputPath": "d:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\xavie\\AppData\\Roaming\\NuGet\\NuGet.Config"

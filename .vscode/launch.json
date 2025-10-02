@@ -2,14 +2,31 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": ".NET Core Launch (console)",
+      "name": "Traductor Básico",
       "type": "coreclr",
       "request": "launch",
-      "program": "${workspaceFolder}/VacunacionSemana10/bin/Debug/net9.0/VacunacionSemana10.dll",
-      "args": [],
-      "cwd": "${workspaceFolder}/VacunacionSemana10",
-      "stopAtEntry": false,
-      "console": "integratedTerminal"
+      "preLaunchTask": "build Traductor Básico",
+      "program": "${workspaceFolder}/SEMANA 11/bin/Debug/net9.0/Traductor_basico.dll",
+      "cwd": "${workspaceFolder}/SEMANA 11",
+      "console": "externalTerminal"
+    },
+    {
+      "name": "Torneo de Fútbol",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build Torneo de Fútbol",
+      "program": "${workspaceFolder}/Experimental 3/bin/Debug/net9.0/Torneo_de_Futbol.dll",
+      "cwd": "${workspaceFolder}/Experimental 3",
+      "console": "externalTerminal"
+    },
+    {
+      "name": "ABB",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build ABB",
+      "program": "${workspaceFolder}/ABB/bin/Debug/net9.0/Catalogo_revistas.dll",
+      "cwd": "${workspaceFolder}/ABB",
+      "console": "externalTerminal"
     }
   ]
 }

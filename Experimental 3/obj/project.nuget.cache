@@ -1,18 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uq2EoC9K0a8=",
+  "dgSpecHash": "2lp1HGNdyIw=",
   "success": true,
-  "projectFilePath": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj",
+  "projectFilePath": "d:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "message": "Problema al leer el archivo de caché D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
-      "projectPath": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj",
-      "warningLevel": 1,
-      "filePath": "D:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }
