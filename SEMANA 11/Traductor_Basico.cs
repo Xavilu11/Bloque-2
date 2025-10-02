@@ -1,11 +1,10 @@
 using System;
 
-// Esta clase contiene toda la lógica del traductor
+// Clase que contiene toda la lógica del traductor
 class TraductorBasico
 {
-    // Arreglo de palabras en inglés (columna izquierda)
-    static string[] palabrasIng = new string[50]
-    {
+    // Arreglo de palabras en inglés (alineadas con las traducciones en español)
+    static string[] palabrasIng = {
         "time",       "person",     "year",       "way",        "day",
         "thing",      "man",        "world",      "life",       "hand",
         "part",       "child",      "eye",        "woman",      "place",
@@ -13,9 +12,8 @@ class TraductorBasico
         "company"
     };
 
-    // Arreglo de palabras en español (columna derecha)
-    static string[] palabrasEsp = new string[50]
-    {
+    // Arreglo de palabras en español (alineadas con las palabras en inglés)
+    static string[] palabrasEsp = {
         "tiempo",     "persona",    "año",        "camino / forma", "día",
         "cosa",       "hombre",     "mundo",      "vida",       "mano",
         "parte",      "niño/a",     "ojo",        "mujer",      "lugar",
@@ -24,7 +22,7 @@ class TraductorBasico
     };
 
     // Contador que indica cuántas palabras hay actualmente en el diccionario
-    static int totalPalabras = 21;
+    static int totalPalabras = palabrasEsp.Length;
 
     // Traduce una frase ingresada por el usuario
     public static void TraducirFrase()
@@ -38,42 +36,27 @@ class TraductorBasico
             return;
         }
 
-        // Separar la frase en palabras usando espacio como delimitador
         string[] palabras = frase.Split(' ');
+        string signos = ".,;:!?\"'()[]{}";
         string resultado = "";
 
-        // Signos de puntuación que queremos limpiar
-        string signos = ".,;:!?\"'()[]{}";
-
-        // Recorrer cada palabra de la frase
-        for (int i = 0; i < palabras.Length; i++)
+        foreach (string palabraOriginal in palabras)
         {
-            string palabraOriginal = palabras[i];
             string palabraLimpia = palabraOriginal.Trim(signos.ToCharArray());
+            string puntuacionFinal = palabraOriginal.Substring(palabraLimpia.Length);
 
-            // Detectar si tenía puntuación al final
-            string puntuacionFinal = "";
-            if (palabraOriginal.Length > palabraLimpia.Length)
-            {
-                puntuacionFinal = palabraOriginal.Substring(palabraLimpia.Length);
-            }
-
-            // Buscar traducción en el diccionario
             string traduccion = BuscarTraduccion(palabraLimpia.ToLower());
 
             if (traduccion != null)
             {
-                // Si la palabra original empieza con mayúscula, conservar estilo
                 if (palabraLimpia.Length > 0 && char.IsUpper(palabraLimpia[0]))
                 {
                     traduccion = char.ToUpper(traduccion[0]) + traduccion.Substring(1);
                 }
-
                 resultado += traduccion + puntuacionFinal + " ";
             }
             else
             {
-                // Si no está en el diccionario, dejar la palabra original
                 resultado += palabraOriginal + " ";
             }
         }
@@ -87,7 +70,6 @@ class TraductorBasico
     {
         for (int i = 0; i < totalPalabras; i++)
         {
-            // Si la palabra buscada está contenida dentro de la entrada en español
             if (palabrasEsp[i].Contains(palabra))
             {
                 return palabrasIng[i];
@@ -99,12 +81,6 @@ class TraductorBasico
     // Permite agregar nuevas palabras al diccionario
     public static void AgregarPalabra()
     {
-        if (totalPalabras >= palabrasEsp.Length)
-        {
-            Console.WriteLine("Diccionario lleno. No se pueden agregar más palabras.");
-            return;
-        }
-
         Console.Write("Ingrese la palabra en español: ");
         string esp = Console.ReadLine()?.Trim().ToLower();
 
@@ -133,9 +109,21 @@ class TraductorBasico
             }
         }
 
-        // Agregar la nueva palabra en la siguiente posición libre
-        palabrasEsp[totalPalabras] = esp;
-        palabrasIng[totalPalabras] = ing;
+        // Expandir los arreglos manualmente (sin estructuras genéricas)
+        string[] nuevoEsp = new string[totalPalabras + 1];
+        string[] nuevoIng = new string[totalPalabras + 1];
+
+        for (int i = 0; i < totalPalabras; i++)
+        {
+            nuevoEsp[i] = palabrasEsp[i];
+            nuevoIng[i] = palabrasIng[i];
+        }
+
+        nuevoEsp[totalPalabras] = esp;
+        nuevoIng[totalPalabras] = ing;
+
+        palabrasEsp = nuevoEsp;
+        palabrasIng = nuevoIng;
         totalPalabras++;
 
         Console.WriteLine("Palabra agregada correctamente.");
