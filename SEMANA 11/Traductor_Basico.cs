@@ -1,122 +1,168 @@
+// Importamos la librería básica para entrada/salida en consola
 using System;
-using System.Collections.Generic;
 
+// Esta clase tiene toda la lógica del traductor
 class TraductorBasico
 {
-    public static Dictionary<string, string> diccionario = new Dictionary<string, string>()
+    // Creamos el diccionario como un arreglo bidimensional de 25 filas y 2 columnas
+    // Cada fila representa una palabra en español y su traducción en inglés
+    static string[,] diccionario = new string[25, 2]
     {
-        {"tiempo", "time"},
-        {"persona", "person"},
-        {"año", "year"},
-        {"camino", "way"},
-        {"forma", "way"},
-        {"día", "day"},
-        {"cosa", "thing"},
-        {"hombre", "man"},
-        {"mundo", "world"},
-        {"vida", "life"},
-        {"mano", "hand"},
-        {"parte", "part"},
-        {"niño", "child"},
-        {"niña", "child"},
-        {"ojo", "eye"},
-        {"mujer", "woman"},
-        {"lugar", "place"},
-        {"trabajo", "work"},
-        {"semana", "week"},
-        {"caso", "case"},
-        {"punto", "point"},
-        {"tema", "point"},
-        {"gobierno", "government"},
-        {"empresa", "company"},
-        {"compañía", "company"}
+        // Palabras base sugeridas por el ejercicio
+        {"tiempo", "time"}, {"persona", "person"}, {"año", "year"},
+        {"camino", "way"}, {"forma", "way"}, {"día", "day"},
+        {"cosa", "thing"}, {"hombre", "man"}, {"mundo", "world"},
+        {"vida", "life"}, {"mano", "hand"}, {"parte", "part"},
+        {"niño", "child"}, {"niña", "child"}, {"ojo", "eye"},
+        {"mujer", "woman"}, {"lugar", "place"}, {"trabajo", "work"},
+        {"semana", "week"}, {"caso", "case"}, {"punto", "point"},
+        {"tema", "point"}, {"gobierno", "government"},
+        {"empresa", "company"}, {"compañía", "company"}
     };
 
+    // Variable para llevar el conteo de cuántas palabras hay en el diccionario
+    static int totalPalabras = 25;
+
+    // Aquí traduce una frase ingresada por el usuario
     public static void TraducirFrase()
     {
+        // Pedimos al usuario que ingrese una frase
         Console.Write("Ingrese una frase en español: ");
-        string? fraseInput = Console.ReadLine();
-        if (string.IsNullOrWhiteSpace(fraseInput))
+        string frase = Console.ReadLine();
+
+        // Validamos que la frase no esté vacía
+        if (string.IsNullOrWhiteSpace(frase))
         {
-            Console.WriteLine("Debe ingresar una frase.");
+            Console.WriteLine("⚠️ Frase vacía.");
             return;
         }
 
-        string[] palabras = fraseInput.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-        List<string> resultado = new List<string>();
+        // Separamos la frase en palabras usando el espacio como separador
+        string[] palabras = frase.Split(' ');
+        string resultado = "";
 
-        foreach (string palabraOriginal in palabras)
+        // Cadena con signos de puntuación que queremos limpiar
+        string signos = ".,;:!?\"'()[]{}";
+
+        // Recorremos cada palabra de la frase
+        for (int i = 0; i < palabras.Length; i++)
         {
-            // Limpiar signos de puntuación al final de la palabra
-            string palabraLimpia = palabraOriginal.TrimEnd('.', ',', ';', ':', '!', '?').ToLower();
-            string puntuacion = palabraOriginal.Length > palabraLimpia.Length
-                ? palabraOriginal.Substring(palabraLimpia.Length)
-                : "";
+            string palabraOriginal = palabras[i];
 
-            if (diccionario.TryGetValue(palabraLimpia, out string traduccion))
+            // Quitamos signos al inicio y al final usando Trim
+            string palabraLimpia = palabraOriginal.Trim(signos.ToCharArray());
+
+            // Si la palabra tenía signos al final, los guardamos aparte
+            string puntuacionFinal = "";
+            if (palabraOriginal.Length > palabraLimpia.Length)
             {
-                // La palabra debe tener la misma forma que la ingresada, si tiene una mayúscula, también deberá tenerla la
-                if (char.IsUpper(palabraOriginal[0]))
-                    traduccion = char.ToUpper(traduccion[0]) + traduccion.Substring(1);
+                puntuacionFinal = palabraOriginal.Substring(palabraLimpia.Length);
+            }
 
-                resultado.Add(traduccion + puntuacion);
+            // Buscamos la traducción en el diccionario
+            string traduccion = BuscarTraduccion(palabraLimpia.ToLower());
+
+            if (traduccion != null)
+            {
+                // Si la palabra original empieza con mayúscula, la conservamos
+                if (palabraLimpia.Length > 0 && char.IsUpper(palabraLimpia[0]))
+                {
+                    traduccion = char.ToUpper(traduccion[0]) + traduccion.Substring(1);
+                }
+
+                // Agregamos la traducción con la puntuación final
+                resultado += traduccion + puntuacionFinal + " ";
             }
             else
             {
-                resultado.Add(palabraOriginal);
+                // Si no está en el diccionario, dejamos la palabra original
+                resultado += palabraOriginal + " ";
             }
         }
 
-        Console.WriteLine("Traducción:");
-        Console.WriteLine(string.Join(" ", resultado));
+        // Mostramos la frase traducida parcialmente
+        Console.WriteLine("\n🗣 Traducción parcial:");
+        Console.WriteLine(resultado.Trim());
     }
 
+    // Este método busca una palabra en español dentro del diccionario
+    static string BuscarTraduccion(string palabra)
+    {
+        // Recorremos todas las filas del diccionario
+        for (int i = 0; i < totalPalabras; i++)
+        {
+            // Comparamos la palabra en español (columna 0)
+            if (diccionario[i, 0].ToLower() == palabra)
+            {
+                // Si la encontramos, devolvemos la traducción en inglés (columna 1)
+                return diccionario[i, 1];
+            }
+        }
+
+        // Si no está, devolvemos null
+        return null;
+    }
+
+    // Este método permite al usuario agregar una nueva palabra al diccionario
     public static void AgregarPalabra()
     {
-        Console.Write("Ingrese la palabra en español: ");
-        string? espInput = Console.ReadLine();
-        string esp = (espInput ?? "").Trim().ToLower();
+        // Verificamos que no se haya llenado el diccionario
+        if (totalPalabras >= diccionario.GetLength(0))
+        {
+            Console.WriteLine("⚠️ Diccionario lleno. No se pueden agregar más palabras.");
+            return;
+        }
 
+        // Pedimos la palabra en español
+        Console.Write("Ingrese la palabra en español: ");
+        string esp = Console.ReadLine();
+
+        // Validamos que no esté vacía
         if (string.IsNullOrWhiteSpace(esp))
         {
-            Console.WriteLine("Debe ingresar una palabra válida.");
+            Console.WriteLine("⚠️ Español inválido.");
             return;
         }
 
+        // Pedimos la traducción en inglés
         Console.Write("Ingrese la traducción en inglés: ");
-        string? ingInput = Console.ReadLine();
-        string ing = (ingInput ?? "").Trim().ToLower();
+        string ing = Console.ReadLine();
 
+        // Validamos que no esté vacía
         if (string.IsNullOrWhiteSpace(ing))
         {
-            Console.WriteLine("Debe ingresar una traducción válida.");
+            Console.WriteLine("⚠️ Inglés inválido.");
             return;
         }
 
-        if (diccionario.ContainsKey(esp))
-        {
-            Console.WriteLine("La palabra ya existe en el diccionario. Se actualizará la traducción.");
-        }
-        diccionario[esp] = ing;
-        Console.WriteLine("Palabra agregada/actualizada correctamente.");
+        // Guardamos ambas palabras en minúsculas en el diccionario
+        diccionario[totalPalabras, 0] = esp.ToLower();
+        diccionario[totalPalabras, 1] = ing.ToLower();
+
+        // Aumentamos el contador de palabras
+        totalPalabras++;
+
+        Console.WriteLine("✅ Palabra agregada correctamente.");
     }
 }
 
+// Esta clase contiene el menú principal del programa
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
+        // Bucle infinito hasta que el usuario decida salir
         while (true)
         {
-            Console.Clear();
+            Console.Clear(); // Limpiamos la pantalla
             Console.WriteLine("==================== MENÚ ====================");
             Console.WriteLine("1. Traducir una frase");
             Console.WriteLine("2. Agregar palabras al diccionario");
             Console.WriteLine("0. Salir");
             Console.Write("Seleccione una opción: ");
-            string? opcionInput = Console.ReadLine();
-            string opcion = (opcionInput ?? "").Trim().ToLower();
+            string opcion = Console.ReadLine();
 
+            // Evaluamos la opción ingresada
             switch (opcion)
             {
                 case "1":
@@ -126,13 +172,14 @@ class Program
                     TraductorBasico.AgregarPalabra();
                     break;
                 case "0":
-                    Console.WriteLine("¡Hasta luego!");
+                    Console.WriteLine("👋 ¡Hasta luego!");
                     return;
                 default:
-                    Console.WriteLine("Opción no válida.");
+                    Console.WriteLine("❌ Opción no válida.");
                     break;
             }
 
+            // Pausa antes de volver al menú
             Console.WriteLine("\nPresione cualquier tecla para continuar...");
             Console.ReadKey();
         }

@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Torneo_de_Futbol")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("VacunacionSemana10")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+acc48e05834178fd4becc31ca7619b03aadd9d80")]
-[assembly: System.Reflection.AssemblyProductAttribute("Torneo_de_Futbol")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Torneo_de_Futbol")]
+[assembly: System.Reflection.AssemblyProductAttribute("VacunacionSemana10")]
+[assembly: System.Reflection.AssemblyTitleAttribute("VacunacionSemana10")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.

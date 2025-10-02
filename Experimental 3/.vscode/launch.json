@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Ejecutar Experimental 3",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build Experimental 3",
+      "program": "${workspaceFolder}/bin/Debug/net9.0/Experimental3.dll",
+      "cwd": "${workspaceFolder}",
+      "console": "externalTerminal"
+    }
+  ]
+}

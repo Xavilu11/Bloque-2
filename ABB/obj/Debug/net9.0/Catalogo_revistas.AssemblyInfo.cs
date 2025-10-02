@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Catalogo_revistas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c8db50fd2f5f14af1ea9ff7bfe6dd16e68e0f873")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+65a65d77a4cde49b65cddfafa61351e68373646c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Catalogo_revistas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Catalogo_revistas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
