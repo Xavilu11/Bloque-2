@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
 
 class Program
 {
-    // Clase que representa a un ciudadano con ID y nombre
+    // Clase que representa a un ciudadano con su ID y nombre
     public class Ciudadano
     {
         public int Id;
@@ -12,61 +11,31 @@ class Program
 
     static void Main()
     {
-        // Lista principal con los 500 ciudadanos
-        List<Ciudadano> todosLosCiudadanos = new List<Ciudadano>();
+        // Creamos un arreglo para guardar los 500 ciudadanos
+        Ciudadano[] todosLosCiudadanos = new Ciudadano[500];
 
-        // Generamos los ciudadanos: "Ciudadano 1" hasta "Ciudadano 500"
-        for (int i = 1; i <= 500; i++)
+        // Llenamos el arreglo con ciudadanos del 1 al 500
+        for (int i = 0; i < 500; i++)
         {
             Ciudadano c = new Ciudadano();
-            c.Id = i;
-            c.Nombre = "Ciudadano " + i;
-            todosLosCiudadanos.Add(c);
+            c.Id = i + 1;
+            c.Nombre = "Ciudadano " + (i + 1);
+            todosLosCiudadanos[i] = c;
         }
 
-        // Conjuntos para representar vacunados con Pfizer y AstraZeneca
-        HashSet<int> vacunadosPfizer = new HashSet<int>();
-        HashSet<int> vacunadosAstraZeneca = new HashSet<int>();
-        Random rnd = new Random();
+        // Arreglos para guardar los IDs vacunados con cada dosis
+        int[] vacunadosPfizer = GenerarVacunadosAleatorios(75);
+        int[] vacunadosAstraZeneca = GenerarVacunadosAleatorios(75);
 
-        // Seleccionamos 75 ciudadanos aleatorios para Pfizer
-        while (vacunadosPfizer.Count < 75)
-        {
-            int idAleatorio = rnd.Next(1, 501);
-            vacunadosPfizer.Add(idAleatorio);
-        }
+        // Creamos arreglos para representar los conjuntos
+        int[] todosLosIds = GenerarTodosLosIds(500);
+        int[] vacunadosTotales = Union(vacunadosPfizer, vacunadosAstraZeneca);
+        int[] noVacunados = Diferencia(todosLosIds, vacunadosTotales);
+        int[] ambasDosis = Interseccion(vacunadosPfizer, vacunadosAstraZeneca);
+        int[] soloPfizer = Diferencia(vacunadosPfizer, vacunadosAstraZeneca);
+        int[] soloAstraZeneca = Diferencia(vacunadosAstraZeneca, vacunadosPfizer);
 
-        // Seleccionamos 75 ciudadanos aleatorios para AstraZeneca
-        while (vacunadosAstraZeneca.Count < 75)
-        {
-            int idAleatorio = rnd.Next(1, 501);
-            vacunadosAstraZeneca.Add(idAleatorio);
-        }
-
-        // Conjunto con todos los ciudadanos creados
-        HashSet<int> todosLosIds = new HashSet<int>();
-        for (int i = 1; i <= 500; i++)
-        {
-            todosLosIds.Add(i);
-        }
-
-        // Operaciones de teoría de conjuntos
-        HashSet<int> vacunadosTotales = new HashSet<int>(vacunadosPfizer);
-        vacunadosTotales.UnionWith(vacunadosAstraZeneca);
-
-        HashSet<int> noVacunados = new HashSet<int>(todosLosIds);
-        noVacunados.ExceptWith(vacunadosTotales);
-
-        HashSet<int> ambasDosis = new HashSet<int>(vacunadosPfizer);
-        ambasDosis.IntersectWith(vacunadosAstraZeneca);
-
-        HashSet<int> soloPfizer = new HashSet<int>(vacunadosPfizer);
-        soloPfizer.ExceptWith(vacunadosAstraZeneca);
-
-        HashSet<int> soloAstraZeneca = new HashSet<int>(vacunadosAstraZeneca);
-        soloAstraZeneca.ExceptWith(vacunadosPfizer);
-
-        // Menú interactivo para el usuario
+        // Menú interactivo
         bool continuar = true;
         while (continuar)
         {
@@ -105,18 +74,163 @@ class Program
         }
     }
 
-    // Método auxiliar para mostrar un listado en consola
-    static void MostrarListado(string titulo, List<Ciudadano> ciudadanos, HashSet<int> idsFiltrados)
+    // Genera un arreglo con IDs aleatorios únicos entre 1 y 500
+    static int[] GenerarVacunadosAleatorios(int cantidad)
     {
-        Console.WriteLine("\n--- " + titulo + " (" + idsFiltrados.Count + ") ---");
+        int[] resultado = new int[cantidad];
+        Random rnd = new Random();
+        int contador = 0;
 
-        for (int i = 0; i < ciudadanos.Count; i++)
+        while (contador < cantidad)
         {
-            if (idsFiltrados.Contains(ciudadanos[i].Id))
+            int id = rnd.Next(1, 501);
+            bool repetido = false;
+
+            // Verificamos que no se repita
+            for (int i = 0; i < contador; i++)
             {
-                Console.WriteLine(ciudadanos[i].Nombre);
+                if (resultado[i] == id)
+                {
+                    repetido = true;
+                    break;
+                }
+            }
+
+            if (!repetido)
+            {
+                resultado[contador] = id;
+                contador++;
+            }
+        }
+
+        return resultado;
+    }
+
+    // Genera un arreglo con todos los IDs del 1 al n
+    static int[] GenerarTodosLosIds(int n)
+    {
+        int[] ids = new int[n];
+        for (int i = 0; i < n; i++)
+        {
+            ids[i] = i + 1;
+        }
+        return ids;
+    }
+
+    // Devuelve la unión de dos arreglos sin repetir elementos
+    static int[] Union(int[] a, int[] b)
+    {
+        int[] temp = new int[a.Length + b.Length];
+        int contador = 0;
+
+        // Agregamos todos los de a
+        for (int i = 0; i < a.Length; i++)
+        {
+            temp[contador++] = a[i];
+        }
+
+        // Agregamos los de b que no estén en a
+        for (int i = 0; i < b.Length; i++)
+        {
+            bool existe = false;
+            for (int j = 0; j < a.Length; j++)
+            {
+                if (b[i] == a[j])
+                {
+                    existe = true;
+                    break;
+                }
+            }
+            if (!existe)
+            {
+                temp[contador++] = b[i];
+            }
+        }
+
+        // Creamos arreglo final con tamaño exacto
+        int[] resultado = new int[contador];
+        for (int i = 0; i < contador; i++)
+        {
+            resultado[i] = temp[i];
+        }
+
+        return resultado;
+    }
+
+    // Devuelve los elementos que están en a pero no en b
+    static int[] Diferencia(int[] a, int[] b)
+    {
+        int[] temp = new int[a.Length];
+        int contador = 0;
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            bool existe = false;
+            for (int j = 0; j < b.Length; j++)
+            {
+                if (a[i] == b[j])
+                {
+                    existe = true;
+                    break;
+                }
+            }
+            if (!existe)
+            {
+                temp[contador++] = a[i];
+            }
+        }
+
+        int[] resultado = new int[contador];
+        for (int i = 0; i < contador; i++)
+        {
+            resultado[i] = temp[i];
+        }
+
+        return resultado;
+    }
+
+    // Devuelve los elementos que están en ambos arreglos
+    static int[] Interseccion(int[] a, int[] b)
+    {
+        int[] temp = new int[Math.Min(a.Length, b.Length)];
+        int contador = 0;
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            for (int j = 0; j < b.Length; j++)
+            {
+                if (a[i] == b[j])
+                {
+                    temp[contador++] = a[i];
+                    break;
+                }
+            }
+        }
+
+        int[] resultado = new int[contador];
+        for (int i = 0; i < contador; i++)
+        {
+            resultado[i] = temp[i];
+        }
+
+        return resultado;
+    }
+
+    // Muestra los ciudadanos cuyo ID está en el arreglo filtrado
+    static void MostrarListado(string titulo, Ciudadano[] ciudadanos, int[] idsFiltrados)
+    {
+        Console.WriteLine("\n--- " + titulo + " (" + idsFiltrados.Length + ") ---");
+
+        for (int i = 0; i < ciudadanos.Length; i++)
+        {
+            for (int j = 0; j < idsFiltrados.Length; j++)
+            {
+                if (ciudadanos[i].Id == idsFiltrados[j])
+                {
+                    Console.WriteLine(ciudadanos[i].Nombre);
+                    break;
+                }
             }
         }
     }
-}
 }
