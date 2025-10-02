@@ -1,10 +1,10 @@
 using System;
-using System.Collections.Generic;
 
 class CatalogoRevistas
 {
-    // Lista de revistas reconocidas
-    static List<string> catalogo = new List<string>()
+    // Creamos un arreglo con 10 títulos de revistas
+    // Este arreglo es fijo, no cambia durante la ejecución
+    static string[] catalogo = new string[]
     {
         "National Geographic",
         "Time",
@@ -21,18 +21,21 @@ class CatalogoRevistas
     static void Main()
     {
         Console.WriteLine("¡Bienvenido al Catálogo de Revistas!");
+
+        // Esta variable nos ayuda a mantener el menú activo
         bool continuar = true;
 
-        // Bucle principal para mostrar el menú para que el usuario decida qué hacer
+        // Bucle principal que muestra el menú y espera la opción del usuario
         while (continuar)
         {
             Console.WriteLine("\n¿Qué te gustaría hacer?");
             Console.WriteLine("1. Buscar un título de revista");
             Console.WriteLine("2. Salir");
-            Console.Write("Por favor, ingresa el número de la opción que prefieras: ");
+            Console.Write("Ingresa el número de la opción: ");
 
             string opcion = Console.ReadLine();
 
+            // Usamos switch para decidir qué hacer según la opción
             switch (opcion)
             {
                 case "1":
@@ -43,46 +46,48 @@ class CatalogoRevistas
                     Console.WriteLine("¡Gracias por usar el catálogo!");
                     break;
                 default:
-                    Console.WriteLine("Ups, esa opción no es válida. Intenta de nuevo, por favor.");
+                    Console.WriteLine("Opción no válida. Intenta de nuevo.");
                     break;
             }
         }
     }
 
-    // Método que solicita al usuario el título a buscar y mostrar el resultado
+    // Este método pide al usuario el título que quiere buscar
     static void BuscarTitulo()
     {
         Console.Write("\nIngresa el título de la revista que deseas buscar: ");
         string tituloBuscado = Console.ReadLine();
 
-        // Convertimos el título ingresado para hacer la búsqueda sin importar mayúsculas o minúsculas
-        bool encontrado = BusquedaRecursiva(tituloBuscado.ToLower(), 0);
+        // Convertimos el texto a minúsculas para comparar sin importar mayúsculas
+        string tituloNormalizado = tituloBuscado.ToLower();
 
+        // Llamamos a la función recursiva para buscar el título
+        bool encontrado = BuscarRecursivo(tituloNormalizado, 0);
+
+        // Mostramos el resultado según lo que devuelva la función
         if (encontrado)
         {
-            Console.WriteLine($"¡Genial! La revista \"{tituloBuscado}\" fue encontrada en el catálogo.");
+            Console.WriteLine("Encontrado");
         }
         else
         {
-            Console.WriteLine($"No pudimos encontrar la revista \"{tituloBuscado}\" en nuestro catálogo.");
+            Console.WriteLine("No encontrado");
         }
     }
 
-    // Función recursiva que busca el título en la lista
-    // Parámetros:
-    // - titulo: el título a buscar 
-    // - indice: posición actual en la lista 
-    static bool BusquedaRecursiva(string titulo, int indice)
+    // Función recursiva que busca el título en el arreglo
+    // Recibe el título en minúsculas y el índice actual
+    static bool BuscarRecursivo(string titulo, int indice)
     {
-        // Caso base: si llegamos al final de la lista sin encontrar el título, retornamos false
-        if (indice >= catalogo.Count)
+        // Si ya revisamos todo el arreglo y no lo encontramos, devolvemos false
+        if (indice >= catalogo.Length)
             return false;
 
-        // Comparamos el título actual en la lista con el título buscado, ambos en minúsculas
+        // Comparamos el título actual con el buscado, ambos en minúsculas
         if (catalogo[indice].ToLower() == titulo)
             return true;
 
-        // Si no es el título buscado, llamamos recursivamente para revisar el siguiente índice
-        return BusquedaRecursiva(titulo, indice + 1);
+        // Si no es el que buscamos, seguimos buscando en el siguiente índice
+        return BuscarRecursivo(titulo, indice + 1);
     }
 }
