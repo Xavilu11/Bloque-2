@@ -2,38 +2,37 @@ using System;
 
 class Program
 {
-    // Clase que representa a un ciudadano con su ID y nombre
+    // Clase que representa a un ciudadano con código y nombre
     public class Ciudadano
     {
-        public int Id;
+        public string Codigo;
         public string Nombre;
     }
 
     static void Main()
     {
-        // Creamos un arreglo para guardar los 500 ciudadanos
+        // Creamos el conjunto de 500 ciudadanos
         Ciudadano[] todosLosCiudadanos = new Ciudadano[500];
 
-        // Llenamos el arreglo con ciudadanos del 1 al 500
         for (int i = 0; i < 500; i++)
         {
             Ciudadano c = new Ciudadano();
-            c.Id = i + 1;
+            c.Codigo = "C" + (i + 1).ToString("D3"); // C001, C002, ..., C500
             c.Nombre = "Ciudadano " + (i + 1);
             todosLosCiudadanos[i] = c;
         }
 
-        // Arreglos para guardar los IDs vacunados con cada dosis
-        int[] vacunadosPfizer = GenerarVacunadosAleatorios(75);
-        int[] vacunadosAstraZeneca = GenerarVacunadosAleatorios(75);
+        // Creamos los conjuntos de vacunados ficticios
+        string[] vacunadosPfizer = GenerarCodigosAleatorios(75);
+        string[] vacunadosAstraZeneca = GenerarCodigosAleatorios(75);
 
-        // Creamos arreglos para representar los conjuntos
-        int[] todosLosIds = GenerarTodosLosIds(500);
-        int[] vacunadosTotales = Union(vacunadosPfizer, vacunadosAstraZeneca);
-        int[] noVacunados = Diferencia(todosLosIds, vacunadosTotales);
-        int[] ambasDosis = Interseccion(vacunadosPfizer, vacunadosAstraZeneca);
-        int[] soloPfizer = Diferencia(vacunadosPfizer, vacunadosAstraZeneca);
-        int[] soloAstraZeneca = Diferencia(vacunadosAstraZeneca, vacunadosPfizer);
+        // Aplicamos operaciones de teoría de conjuntos
+        string[] todosLosCodigos = GenerarTodosLosCodigos(500);
+        string[] vacunadosTotales = Union(vacunadosPfizer, vacunadosAstraZeneca);
+        string[] noVacunados = Diferencia(todosLosCodigos, vacunadosTotales);
+        string[] ambasDosis = Interseccion(vacunadosPfizer, vacunadosAstraZeneca);
+        string[] soloPfizer = Diferencia(vacunadosPfizer, vacunadosAstraZeneca);
+        string[] soloAstraZeneca = Diferencia(vacunadosAstraZeneca, vacunadosPfizer);
 
         // Menú interactivo
         bool continuar = true;
@@ -46,7 +45,6 @@ class Program
             Console.WriteLine("4. Ver ciudadanos con solo AstraZeneca");
             Console.WriteLine("5. Salir");
             Console.Write("Seleccione una opción (1-5): ");
-
             string opcion = Console.ReadLine();
 
             switch (opcion)
@@ -74,22 +72,22 @@ class Program
         }
     }
 
-    // Genera un arreglo con IDs aleatorios únicos entre 1 y 500
-    static int[] GenerarVacunadosAleatorios(int cantidad)
+    // Genera un arreglo con códigos aleatorios únicos tipo "C001" a "C500"
+    static string[] GenerarCodigosAleatorios(int cantidad)
     {
-        int[] resultado = new int[cantidad];
+        string[] resultado = new string[cantidad];
         Random rnd = new Random();
         int contador = 0;
 
         while (contador < cantidad)
         {
-            int id = rnd.Next(1, 501);
-            bool repetido = false;
+            int numero = rnd.Next(1, 501);
+            string codigo = "C" + numero.ToString("D3");
 
-            // Verificamos que no se repita
+            bool repetido = false;
             for (int i = 0; i < contador; i++)
             {
-                if (resultado[i] == id)
+                if (resultado[i] == codigo)
                 {
                     repetido = true;
                     break;
@@ -98,7 +96,7 @@ class Program
 
             if (!repetido)
             {
-                resultado[contador] = id;
+                resultado[contador] = codigo;
                 contador++;
             }
         }
@@ -106,30 +104,26 @@ class Program
         return resultado;
     }
 
-    // Genera un arreglo con todos los IDs del 1 al n
-    static int[] GenerarTodosLosIds(int n)
+    // Genera todos los códigos del conjunto total
+    static string[] GenerarTodosLosCodigos(int n)
     {
-        int[] ids = new int[n];
+        string[] codigos = new string[n];
         for (int i = 0; i < n; i++)
         {
-            ids[i] = i + 1;
+            codigos[i] = "C" + (i + 1).ToString("D3");
         }
-        return ids;
+        return codigos;
     }
 
-    // Devuelve la unión de dos arreglos sin repetir elementos
-    static int[] Union(int[] a, int[] b)
+    // Unión de dos conjuntos sin repetir elementos
+    static string[] Union(string[] a, string[] b)
     {
-        int[] temp = new int[a.Length + b.Length];
+        string[] temp = new string[a.Length + b.Length];
         int contador = 0;
 
-        // Agregamos todos los de a
         for (int i = 0; i < a.Length; i++)
-        {
             temp[contador++] = a[i];
-        }
 
-        // Agregamos los de b que no estén en a
         for (int i = 0; i < b.Length; i++)
         {
             bool existe = false;
@@ -142,25 +136,20 @@ class Program
                 }
             }
             if (!existe)
-            {
                 temp[contador++] = b[i];
-            }
         }
 
-        // Creamos arreglo final con tamaño exacto
-        int[] resultado = new int[contador];
+        string[] resultado = new string[contador];
         for (int i = 0; i < contador; i++)
-        {
             resultado[i] = temp[i];
-        }
 
         return resultado;
     }
 
-    // Devuelve los elementos que están en a pero no en b
-    static int[] Diferencia(int[] a, int[] b)
+    // Diferencia: elementos en 'a' que no están en 'b'
+    static string[] Diferencia(string[] a, string[] b)
     {
-        int[] temp = new int[a.Length];
+        string[] temp = new string[a.Length];
         int contador = 0;
 
         for (int i = 0; i < a.Length; i++)
@@ -175,24 +164,20 @@ class Program
                 }
             }
             if (!existe)
-            {
                 temp[contador++] = a[i];
-            }
         }
 
-        int[] resultado = new int[contador];
+        string[] resultado = new string[contador];
         for (int i = 0; i < contador; i++)
-        {
             resultado[i] = temp[i];
-        }
 
         return resultado;
     }
 
-    // Devuelve los elementos que están en ambos arreglos
-    static int[] Interseccion(int[] a, int[] b)
+    // Intersección: elementos que están en ambos conjuntos
+    static string[] Interseccion(string[] a, string[] b)
     {
-        int[] temp = new int[Math.Min(a.Length, b.Length)];
+        string[] temp = new string[Math.Min(a.Length, b.Length)];
         int contador = 0;
 
         for (int i = 0; i < a.Length; i++)
@@ -201,33 +186,43 @@ class Program
             {
                 if (a[i] == b[j])
                 {
-                    temp[contador++] = a[i];
+                    bool yaIncluido = false;
+                    for (int k = 0; k < contador; k++)
+                    {
+                        if (temp[k] == a[i])
+                        {
+                            yaIncluido = true;
+                            break;
+                        }
+                    }
+                    if (!yaIncluido)
+                    {
+                        temp[contador++] = a[i];
+                    }
                     break;
                 }
             }
         }
 
-        int[] resultado = new int[contador];
+        string[] resultado = new string[contador];
         for (int i = 0; i < contador; i++)
-        {
             resultado[i] = temp[i];
-        }
 
         return resultado;
     }
 
-    // Muestra los ciudadanos cuyo ID está en el arreglo filtrado
-    static void MostrarListado(string titulo, Ciudadano[] ciudadanos, int[] idsFiltrados)
+    // Muestra los ciudadanos cuyo código está en el conjunto filtrado
+    static void MostrarListado(string titulo, Ciudadano[] ciudadanos, string[] codigosFiltrados)
     {
-        Console.WriteLine("\n--- " + titulo + " (" + idsFiltrados.Length + ") ---");
+        Console.WriteLine("\n--- " + titulo + " (" + codigosFiltrados.Length + ") ---");
 
         for (int i = 0; i < ciudadanos.Length; i++)
         {
-            for (int j = 0; j < idsFiltrados.Length; j++)
+            for (int j = 0; j < codigosFiltrados.Length; j++)
             {
-                if (ciudadanos[i].Id == idsFiltrados[j])
+                if (ciudadanos[i].Codigo == codigosFiltrados[j])
                 {
-                    Console.WriteLine(ciudadanos[i].Nombre);
+                    Console.WriteLine(ciudadanos[i].Nombre + " (" + ciudadanos[i].Codigo + ")");
                     break;
                 }
             }
