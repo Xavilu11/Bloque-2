@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ProyectosCsharp\\Bloque 2\\SEMANA 11\\Traductor_basico.csproj": {}
+    "D:\\ProyectosCsharp\\Semestre3-Bloque2\\SEMANA 11\\Traductor_basico.csproj": {}
   },
   "projects": {
-    "D:\\ProyectosCsharp\\Bloque 2\\SEMANA 11\\Traductor_basico.csproj": {
+    "D:\\ProyectosCsharp\\Semestre3-Bloque2\\SEMANA 11\\Traductor_basico.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ProyectosCsharp\\Bloque 2\\SEMANA 11\\Traductor_basico.csproj",
+        "projectUniqueName": "D:\\ProyectosCsharp\\Semestre3-Bloque2\\SEMANA 11\\Traductor_basico.csproj",
         "projectName": "Traductor_basico",
-        "projectPath": "D:\\ProyectosCsharp\\Bloque 2\\SEMANA 11\\Traductor_basico.csproj",
+        "projectPath": "D:\\ProyectosCsharp\\Semestre3-Bloque2\\SEMANA 11\\Traductor_basico.csproj",
         "packagesPath": "C:\\Users\\xavie\\.nuget\\packages\\",
-        "outputPath": "D:\\ProyectosCsharp\\Bloque 2\\SEMANA 11\\obj\\",
+        "outputPath": "D:\\ProyectosCsharp\\Semestre3-Bloque2\\SEMANA 11\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\xavie\\AppData\\Roaming\\NuGet\\NuGet.Config"

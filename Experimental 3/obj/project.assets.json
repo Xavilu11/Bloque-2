@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj",
+      "projectUniqueName": "D:\\ProyectosCsharp\\Semestre3-Bloque2\\Experimental 3\\Torneo_de_Futbol.csproj",
       "projectName": "Torneo_de_Futbol",
-      "projectPath": "d:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\Torneo_de_Futbol.csproj",
+      "projectPath": "D:\\ProyectosCsharp\\Semestre3-Bloque2\\Experimental 3\\Torneo_de_Futbol.csproj",
       "packagesPath": "C:\\Users\\xavie\\.nuget\\packages\\",
-      "outputPath": "d:\\ProyectosCsharp\\Bloque 2\\Experimental 3\\obj\\",
+      "outputPath": "D:\\ProyectosCsharp\\Semestre3-Bloque2\\Experimental 3\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\xavie\\AppData\\Roaming\\NuGet\\NuGet.Config"
