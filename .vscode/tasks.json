@@ -3,33 +3,66 @@
   "tasks": [
     {
       "label": "build Traductor Básico",
-      "command": "dotnet",
       "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/SEMANA 11/Traductor_basico.csproj"
-      ],
+      "command": "dotnet",
+      "args": ["build", "${workspaceFolder}/SEMANA 11/Traductor_basico.csproj"],
       "problemMatcher": "$msCompile"
     },
     {
       "label": "build Torneo de Fútbol",
-      "command": "dotnet",
       "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/Experimental 3/Torneo_de_Futbol.csproj"
-      ],
+      "command": "dotnet",
+      "args": ["build", "${workspaceFolder}/Experimental 3/Torneo_de_Futbol.csproj"],
       "problemMatcher": "$msCompile"
     },
     {
       "label": "build ABB",
-      "command": "dotnet",
       "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/ABB/Catalogo_revistas.csproj"
-      ],
+      "command": "dotnet",
+      "args": ["build", "${workspaceFolder}/ABB/Catalogo_revistas.csproj"],
       "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build RutasdeGrafos",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["build", "${workspaceFolder}/Experimental 4/RutasdeGrafos.csproj"],
+      "problemMatcher": "$msCompile"
+    }
+    ,
+    {
+      "label": "build active file",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}\\.vscode\\scripts\\run_project.ps1",
+        "-startDir",
+        "${fileDirname}"
+      ],
+      "problemMatcher": "$msCompile",
+      "presentation": { "reveal": "silent" }
+    }
+    ,
+    {
+      "label": "run active file",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}\\.vscode\\scripts\\run_project.ps1",
+        "-startDir",
+        "${fileDirname}",
+        "-run"
+      ],
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
     }
   ]
 }

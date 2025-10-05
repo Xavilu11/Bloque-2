@@ -1,0 +1,8 @@
+{
+  // Intento de dejar sin proyecto de inicio: valores en blanco para claves comunes
+  "csharp.startupProject": "",
+  "omnisharp.startupProject": "",
+  "csharp.defaultLaunchProject": "",
+  "dotnet.defaultSolution": "",
+  "__lastModifiedByScript": "2025-10-05T00:00:00Z"
+}

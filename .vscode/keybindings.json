@@ -1,0 +1,8 @@
+[
+  {
+    "key": "f5",
+    "command": "workbench.action.debug.start",
+    "args": { "configuration": "Launch Active C# Project" },
+    "when": "editorTextFocus && editorLangId == 'csharp'"
+  }
+]

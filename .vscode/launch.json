@@ -2,10 +2,18 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch Active C# Project",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build active file",
+      "program": "${fileDirname}/bin/Debug/net9.0/${fileBasenameNoExtension}.dll",
+      "cwd": "${fileDirname}",
+      "console": "externalTerminal"
+    },
+    {
       "name": "Traductor Básico",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "build Traductor Básico",
       "program": "${workspaceFolder}/SEMANA 11/bin/Debug/net9.0/Traductor_basico.dll",
       "cwd": "${workspaceFolder}/SEMANA 11",
       "console": "externalTerminal"
@@ -14,7 +22,6 @@
       "name": "Torneo de Fútbol",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "build Torneo de Fútbol",
       "program": "${workspaceFolder}/Experimental 3/bin/Debug/net9.0/Torneo_de_Futbol.dll",
       "cwd": "${workspaceFolder}/Experimental 3",
       "console": "externalTerminal"
@@ -23,9 +30,16 @@
       "name": "ABB",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "build ABB",
       "program": "${workspaceFolder}/ABB/bin/Debug/net9.0/Catalogo_revistas.dll",
       "cwd": "${workspaceFolder}/ABB",
+      "console": "externalTerminal"
+    },
+    {
+      "name": "RutasdeGrafos",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/Experimental 4/bin/Debug/net9.0/RutasdeGrafos.dll",
+      "cwd": "${workspaceFolder}/Experimental 4",
       "console": "externalTerminal"
     }
   ]
