@@ -18,7 +18,7 @@ class Program
         Console.WriteLine("=== Matriz de adyacencia ===");
         g.PrintMatrix();
 
-        // 📍 Reportería: conexiones por nodo
+        //Reportería: conexiones por nodo
         Console.WriteLine("\n=== Conexiones por nodo ===");
         g.PrintConnections();
     }
