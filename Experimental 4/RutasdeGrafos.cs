@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        // 🧠 Definición de nodos urbanos
+        //Definición de nodos urbanos
         string[] nombres = { "Quitumbe", "La Marín", "San Rafael", "Conocoto" };
         GraphMatrix g = new GraphMatrix(nombres);
 
